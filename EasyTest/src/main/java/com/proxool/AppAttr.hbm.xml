@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.proxool" default-lazy="true">
+<class name="AppAttr" table="endw_appattr">
+  <id name="id" type="string" column="c_appAttr_id">
+			<generator class="uuid" />
+</id>
+  <property name="name" column="c_appAttr_name" type="string"/>
+  <property name="codeAppId" column="c_codeApp_id" type="string"/>
+  <property name="fieldType" column="c_field_type" type="string"/>
+
+</class>
+</hibernate-mapping>

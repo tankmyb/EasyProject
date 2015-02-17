@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:p="http://www.springframework.org/schema/p" xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:context="http://www.springframework.org/schema/context" xmlns:jee="http://www.springframework.org/schema/jee"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xsi:schemaLocation="
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd">
+	<!-- ======================================================================================= -->
+	<!-- 加载logback配置文件，别忘了配置init-method -->
+	<!-- ======================================================================================= -->
+	<bean id="slf4jLogger" class="com.easy.kit.logger.conf.Slf4jLogger" init-method="initializing">
+		<property name="logback" value="classpath:logback.xml" />
+	</bean>
+	<!-- ======================================================================================= -->
+	<!-- 加载基本的日志类 -->
+	<!-- ======================================================================================= -->
+	<bean name="DefaultInfoLogger" class="com.easy.kit.logger.DefaultInfoLogger" />
+	<bean name="DefaultErrorLogger" class="com.easy.kit.logger.DefaultErrorLogger" />
+	<bean name="DefaultExceptionLogger" class="com.easy.kit.logger.DefaultExceptionLogger" />
+	
+	
+	<aop:aspectj-autoproxy/>  
+     <bean class="com.easy.kit.cache.ehcache.CacheServiceAspect"/>
+     <bean class="com.easy.kit.cache.CacheService"/>  
+</beans>

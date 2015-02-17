@@ -1,0 +1,17 @@
+package proto;//生成的数据访问类所在的包名(注意：在此无需写全包路径)  
+option java_package = "com.netty4.erlproto";//生成的数据访问类所在包的全路径  
+option java_outer_classname = "HeaderBuf";//生成的数据访问类的类名  
+message Header {  
+  required int32 mtype = 1;//消息类型  
+  optional int32 stype = 2;//业务类型  
+  optional int32 sid=3;//会话ID
+  optional Map attr = 4;//附件
+message KeyValue{
+     required string key = 1;
+     required string value = 2;
+}
+ 
+message Map {
+     repeated KeyValue items = 1;
+}
+} 

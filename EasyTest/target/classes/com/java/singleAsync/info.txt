@@ -1,0 +1,14 @@
+#插入订单支付表sql
+INSERT INTO `shop_instant` (`id`, `ord_no`, `deal_id`, `pay_result`, `gmt_create`, `total_fee`, `pay_type`)
+ VALUES (date_format(now(),'%Y%c%d%H%i%s'), '<订单ord_no>', '1590590188', '10', now(), 1.00, 35);
+
+#插入订单快钱支付表sql 
+INSERT INTO `shop_instant_99bill` (`id`, `ord_no`, `bank_deal_id`, `fee`, `err_code`)
+select id,ord_no,date_format(now(),'%Y%c%d%H%i%s'),1,'' from shop_instant
+ where ord_no='<订单ord_no>'
+
+#这里修改订单支付成功的字段数据
+update shop_order_list set 
+ pay_time=now(),shipping_time=now(),pay_type=35,pay_state=1,shipping_status=1
+ where order_no='<订单ord_no>'
+

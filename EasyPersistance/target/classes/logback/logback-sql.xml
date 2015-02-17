@@ -1,0 +1,24 @@
+<included>
+	<!-- ========================================================================================= -->
+	<!-- 系统异常信息 -->
+	<!-- ========================================================================================= -->
+	<appender name="sqlFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${log.root.path}/${sql.file}.log</File>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>INFO</level>
+			<OnMismatch>DENY</OnMismatch>
+			<OnMatch>ACCEPT</OnMatch>
+		</filter>
+		<encoder charset="utf-8">
+			<Pattern>${log.pattern}</Pattern>
+		</encoder>
+	    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	        <fileNamePattern>${log.root.path}/${sql.file}_%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>365</maxHistory><!-- keep 1 year worth of history -->
+	    </rollingPolicy>	
+	</appender>
+	<logger name="SqlLogger">
+		<level>INFO</level>
+		<appender-ref ref="sqlFile" />
+	</logger>
+</included>

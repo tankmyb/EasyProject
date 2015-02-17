@@ -1,0 +1,27 @@
+<included>
+	<!-- ================================================================================== -->
+	<!-- 个性化需求日志记录 -->
+	<!-- ================================================================================== -->
+	<appender name="individualFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- 
+			<File>${log.root.path}/${access.file}.log</File>
+		 -->
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>INFO</level>
+			<OnMismatch>DENY</OnMismatch>
+			<OnMatch>ACCEPT</OnMatch>
+		</filter>
+		<encoder charset="utf-8">
+			<Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}|%msg%n</Pattern>
+		</encoder>
+	    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	        <fileNamePattern>${individual.root.path}/${individual.file}_%d{yyyyMMdd}.log</fileNamePattern>
+			<maxHistory>365</maxHistory><!-- keep 1 year worth of history -->
+	    </rollingPolicy>	
+	</appender>
+	
+	<logger name="IndividualLogger" addivity="true">
+		<level>INFO</level>
+	    <appender-ref ref="individualFile"/>
+	</logger>
+</included>

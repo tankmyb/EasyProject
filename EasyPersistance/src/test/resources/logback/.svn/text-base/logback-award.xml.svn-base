@@ -1,0 +1,26 @@
+<included>
+	<!-- ================================================================================== -->
+	<!-- 抽奖跟踪日志 -->
+	<!-- ================================================================================== -->
+	<appender name="awardFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${log.root.path}/${award.file}.log</File>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>INFO</level>
+			<OnMismatch>DENY</OnMismatch>
+			<OnMatch>ACCEPT</OnMatch>
+		</filter>
+		<encoder charset="utf-8">
+			<Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} -%mdc{serialNo} - %msg%n</Pattern>
+		</encoder>
+	    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	        <fileNamePattern>${log.root.path}/${award.file}_%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>365</maxHistory><!-- keep 1 year worth of history -->
+	    </rollingPolicy>	
+	</appender>
+	<logger name="AwardLogger" addivity="false">
+		<level>INFO</level>
+	    <appender-ref ref="awardFile"/>
+	</logger>
+	
+	
+</included>

@@ -1,0 +1,24 @@
+<included>
+	<!-- ========================================================================================= -->
+	<!-- 系统异常信息 -->
+	<!-- ========================================================================================= -->
+	<appender name="ErrorTestFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${log.root.path}/${error.file}.log</File>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>ERROR</level>
+			<OnMismatch>DENY</OnMismatch>
+			<OnMatch>ACCEPT</OnMatch>
+		</filter>
+		<encoder charset="utf-8">
+			<Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} - %msg%n</Pattern>
+		</encoder>
+	    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	        <fileNamePattern>${log.root.path}/${error.file}_%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>365</maxHistory><!-- keep 1 year worth of history -->
+	    </rollingPolicy>	
+	</appender>
+	<logger name="GAFError" addivity="false">
+		<level>ERROR</level>
+	    <appender-ref ref="ErrorTestFile"/>
+	</logger>
+</included>

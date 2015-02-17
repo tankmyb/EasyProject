@@ -1,0 +1,22 @@
+package testProtobuf;//生成的数据访问类所在的包名(注意：在此无需写全包路径)  
+option java_package = "com.protobuf.testProtobuf";//生成的数据访问类所在包的全路径  
+option java_outer_classname = "PersonProtobuf";//生成的数据访问类的类名  
+import "header.proto";
+message Person {  
+  required string name = 1;//必须字段，在后面的使用中必须为该段设置值  
+  required int32 id = 2;//同上  
+  optional string email = 3;//可选字段，在后面的使用中可以自由决定是否为该字段设置值  
+  optional Header header=5;
+  enum PhoneType {//设置一个枚举类型  
+    MOBILE = 0;  
+    HOME = 1;  
+    WORK = 2;  
+  }  
+  
+  message PhoneNumber {  
+    required string number = 1;  
+    optional PhoneType type = 2 [default = HOME];  
+  }  
+  
+  repeated PhoneNumber phone = 4;//重复字段(可以认为是一个集合)，在后面的使用中可以为该字段设置多个值  
+} 

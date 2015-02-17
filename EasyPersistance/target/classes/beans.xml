@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<beans xmlns="http://www.springframework.org/schema/beans"   
+	
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
+	
+	xmlns:tx="http://www.springframework.org/schema/tx"   
+	
+	xmlns:jee="http://www.springframework.org/schema/jee"   
+	
+	xmlns:context="http://www.springframework.org/schema/context"   
+	
+	xmlns:aop="http://www.springframework.org/schema/aop"   
+	
+	xsi:schemaLocation="http://www.springframework.org/schema/beans     
+	
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd    
+	
+	http://www.springframework.org/schema/tx     
+	
+	http://www.springframework.org/schema/tx/spring-tx-2.5.xsd     
+	
+	http://www.springframework.org/schema/jee     
+	
+	http://www.springframework.org/schema/jee/spring-jee-2.5.xsd     
+	
+	http://www.springframework.org/schema/context     
+	
+	http://www.springframework.org/schema/context/spring-context-2.5.xsd     
+	
+	http://www.springframework.org/schema/aop     
+	
+	http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">   
+
+	<!-- ================================================================================================= -->
+	<!-- 加载资源文件 -->
+	<!-- ================================================================================================= -->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:datasource.properties</value>
+			</list>
+		</property>
+		<property name="fileEncoding" value="UTF-8"/>
+	</bean>
+	
+	<bean id="dataSource"
+		class="org.logicalcobwebs.proxool.ProxoolDataSource">
+		<property name="driver" value="${database.driver}" />
+		<property name="driverUrl" value="${database.url}" />
+		<property name="user" value="${database.username}" />
+		<property name="password" value="${database.password}" />
+		<property name="alias" value="Pool_dbname"/> 
+        <!-- 最大活动时间(超过此时间线程将被kill,默认为5分钟) -->
+		<property name="maximumActiveTime" value="300000"/> 
+		<!--最少保持的空闲连接数 （默认2个）-->
+		<property name="prototypeCount" value="2"/> 
+		<!--最大连接数 （默认5个）-->
+		<property name="maximumConnectionCount" value="50"/> 
+		<!-- 最小连接数 （默认2个）-->
+		<property name="minimumConnectionCount" value="2"/> 
+		<property name="simultaneousBuildThrottle" value="50"/> 
+		<!-- 测试的SQL执行语句 -->
+		<property name="houseKeepingTestSql" value="select CURRENT_DATE"/> 
+	</bean>
+	<!-- 事務一定要用ApplicationContext,不能用FactoryBean -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<!--DataSourceTransactionManager需要注入一个DataSource的引用-->   
+		<property name="dataSource">
+			<ref local ="dataSource"/>
+		</property>
+	</bean>  
+	
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg>
+			<ref bean="dataSource" />
+		</constructor-arg>
+	</bean>
+	<bean id="jdbcTemplateEx" class="com.easy.persistance.dao.JdbcTemplateEx">
+	</bean>
+	<bean id="testUserDao" class="com.easy.persistance.ex.TestBaseDao">
+	</bean>
+	<bean id="jdbcExector" class="com.easy.persistance.ex.JdbcExector">
+	</bean>
+</beans>  
+
+

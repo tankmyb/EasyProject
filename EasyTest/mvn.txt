@@ -1,0 +1,1 @@
+mvn install:install-file -Dfile=e:/tank/lib/httpclient-4.1.3.jar -DgroupId=org.apache.httpcomponents -DartifactId=httpclient -Dversion=4.1.3 -Dpackaging=jar -DgeneratePom=true

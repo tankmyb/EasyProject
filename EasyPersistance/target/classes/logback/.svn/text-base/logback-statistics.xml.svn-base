@@ -1,0 +1,46 @@
+<included>
+	<!-- ========================================================================================= -->
+	<!-- 统计日志信息 -->
+	<!-- ========================================================================================= -->
+	<appender name="StatisFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${log.root.path}/${statis.file}.log</File>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>INFO</level>
+			<OnMismatch>DENY</OnMismatch>
+			<OnMatch>ACCEPT</OnMatch>
+		</filter>
+		<encoder charset="utf-8">
+			<Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}|%mdc{serialNo}|%mdc{startTime}|%mdc{finishTime}|%mdc{channel}|%mdc{mobileNo}|%mdc{brand}|%mdc{branch}|%mdc{serviceIdentity}|%mdc{operaType}|%mdc{operaResult}|%mdc{failId}|%n</Pattern>
+		</encoder>
+	    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	        <fileNamePattern>${log.root.path}/${statis.file}_%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>365</maxHistory><!-- keep 1 year worth of history -->
+	    </rollingPolicy>	
+	</appender>
+	
+	<logger name="GAFStatistics" addivity="true">
+		<level>INFO</level>
+	    <appender-ref ref="StatisFile"/>
+	</logger>
+	
+	<appender name="ExampleStatisFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${log.root.path}/${statis.example.file}.log</File>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>INFO</level>
+			<OnMismatch>DENY</OnMismatch>
+			<OnMatch>ACCEPT</OnMatch>
+		</filter>
+		<encoder charset="utf-8">
+			<Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}|%mdc{serialNo}|%mdc{startTime}|%mdc{finishTime}|%mdc{channel}|%mdc{mobileNo}|%mdc{brand}|%mdc{branch}|%mdc{serviceIdentity}|%mdc{operaType}|%mdc{operaResult}|%mdc{failId}|%n</Pattern>
+		</encoder>
+	    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	        <fileNamePattern>${log.root.path}/${statis.example.file}_%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>365</maxHistory><!-- keep 1 year worth of history -->
+	    </rollingPolicy>	
+	</appender>
+	
+	<logger name="ExampleLotteryStatistics" addivity="true">
+		<level>INFO</level>
+	    <appender-ref ref="ExampleStatisFile"/>
+	</logger>
+</included>

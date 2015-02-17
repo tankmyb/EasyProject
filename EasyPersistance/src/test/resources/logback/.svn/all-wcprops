@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/DZQD_NEW/!svn/ver/157215/02%E4%BB%A3%E7%A0%81/01%E6%BA%90%E4%BB%A3%E7%A0%81/26NewProject/ecop/ecop-marketing/ecop-marketing-support/src/main/resources/logback
+END
+logback-interface.xml
+K 25
+svn:wc:ra_dav:version-url
+V 181
+/DZQD_NEW/!svn/ver/142955/02%E4%BB%A3%E7%A0%81/01%E6%BA%90%E4%BB%A3%E7%A0%81/26NewProject/ecop/ecop-marketing/ecop-marketing-support/src/main/resources/logback/logback-interface.xml
+END
+logback-config.properties
+K 25
+svn:wc:ra_dav:version-url
+V 185
+/DZQD_NEW/!svn/ver/157601/02%E4%BB%A3%E7%A0%81/01%E6%BA%90%E4%BB%A3%E7%A0%81/26NewProject/ecop/ecop-marketing/ecop-marketing-support/src/main/resources/logback/logback-config.properties
+END
+logback-marketing.xml
+K 25
+svn:wc:ra_dav:version-url
+V 181
+/DZQD_NEW/!svn/ver/141656/02%E4%BB%A3%E7%A0%81/01%E6%BA%90%E4%BB%A3%E7%A0%81/26NewProject/ecop/ecop-marketing/ecop-marketing-support/src/main/resources/logback/logback-marketing.xml
+END
+logback.xml
+K 25
+svn:wc:ra_dav:version-url
+V 171
+/DZQD_NEW/!svn/ver/156919/02%E4%BB%A3%E7%A0%81/01%E6%BA%90%E4%BB%A3%E7%A0%81/26NewProject/ecop/ecop-marketing/ecop-marketing-support/src/main/resources/logback/logback.xml
+END
+logback-dongguan.xml
+K 25
+svn:wc:ra_dav:version-url
+V 180
+/DZQD_NEW/!svn/ver/150104/02%E4%BB%A3%E7%A0%81/01%E6%BA%90%E4%BB%A3%E7%A0%81/26NewProject/ecop/ecop-marketing/ecop-marketing-support/src/main/resources/logback/logback-dongguan.xml
+END
+logback-individual.xml
+K 25
+svn:wc:ra_dav:version-url
+V 182
+/DZQD_NEW/!svn/ver/157214/02%E4%BB%A3%E7%A0%81/01%E6%BA%90%E4%BB%A3%E7%A0%81/26NewProject/ecop/ecop-marketing/ecop-marketing-support/src/main/resources/logback/logback-individual.xml
+END
+logback-error.xml
+K 25
+svn:wc:ra_dav:version-url
+V 177
+/DZQD_NEW/!svn/ver/122715/02%E4%BB%A3%E7%A0%81/01%E6%BA%90%E4%BB%A3%E7%A0%81/26NewProject/ecop/ecop-marketing/ecop-marketing-support/src/main/resources/logback/logback-error.xml
+END
+logback-statistics.xml
+K 25
+svn:wc:ra_dav:version-url
+V 182
+/DZQD_NEW/!svn/ver/122715/02%E4%BB%A3%E7%A0%81/01%E6%BA%90%E4%BB%A3%E7%A0%81/26NewProject/ecop/ecop-marketing/ecop-marketing-support/src/main/resources/logback/logback-statistics.xml
+END
+logback-trace.xml
+K 25
+svn:wc:ra_dav:version-url
+V 177
+/DZQD_NEW/!svn/ver/122715/02%E4%BB%A3%E7%A0%81/01%E6%BA%90%E4%BB%A3%E7%A0%81/26NewProject/ecop/ecop-marketing/ecop-marketing-support/src/main/resources/logback/logback-trace.xml
+END
+logback-award.xml
+K 25
+svn:wc:ra_dav:version-url
+V 177
+/DZQD_NEW/!svn/ver/142955/02%E4%BB%A3%E7%A0%81/01%E6%BA%90%E4%BB%A3%E7%A0%81/26NewProject/ecop/ecop-marketing/ecop-marketing-support/src/main/resources/logback/logback-award.xml
+END

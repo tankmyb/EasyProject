@@ -1,0 +1,26 @@
+<included>
+	<!-- ================================================================================== -->
+	<!-- 抽奖跟踪日志 -->
+	<!-- ================================================================================== -->
+	<appender name="interfaceFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${log.root.path}/${interface.file}.log</File>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>INFO</level>
+			<OnMismatch>DENY</OnMismatch>
+			<OnMatch>ACCEPT</OnMatch>
+		</filter>
+		<encoder charset="utf-8">
+			<Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} -%mdc{serialNo} - %msg%n</Pattern>
+		</encoder>
+	    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	        <fileNamePattern>${log.root.path}/${interface.file}_%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>365</maxHistory><!-- keep 1 year worth of history -->
+	    </rollingPolicy>	
+	</appender>
+	<logger name="InterfaceLogger" addivity="false">
+		<level>INFO</level>
+	    <appender-ref ref="interfaceFile"/>
+	</logger>
+	
+	
+</included>

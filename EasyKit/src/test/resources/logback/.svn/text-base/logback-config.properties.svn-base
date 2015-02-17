@@ -1,0 +1,16 @@
+context.name=ECOPMarketing
+log.level=info
+log.root.path=D\:\\logs\\ecop\\marketing
+error.file=error/Error
+statis.file=statistics/default/Statistics
+statis.example.file=statistics/example/Statistics
+trace.file=trace/default/Trace
+trace.memcache.file=trace/memcache/Memcache
+award.file=award/award
+marketing.file=marketing/marketing
+interface.file=interface/interface
+log.file=log/log
+dongguan.file=dongguan/dongguan
+
+individual.root.path=D\:\\logs\\ecop\\mail139
+individual.file=login/login

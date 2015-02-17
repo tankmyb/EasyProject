@@ -1,0 +1,88 @@
+<configuration scan="true" debug="true">
+	<property resource="log.properties" />
+	<appender name="FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${LOG_HOME}/${LOG_FILENAME}.log</File>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>${LOG_LEVEL}</level>
+			<OnMismatch>DENY</OnMismatch>
+			<OnMatch>ACCEPT</OnMatch>
+		</filter>
+		<encoder charset="utf-8">
+			<Pattern>%d{HH:mm:ss} %level [%thread] %caller{1} - %msg%n</Pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_HOME}/${LOG_FILENAME}_%d{yyyy-MM-dd}.log
+			</fileNamePattern>
+			<maxHistory>365</maxHistory><!-- keep 1 year worth of history -->
+		</rollingPolicy>
+	</appender>
+	<!-- ========================================================================================= -->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>${LOG_LEVEL}</level>
+			<OnMismatch>DENY</OnMismatch>
+			<OnMatch>ACCEPT</OnMatch>
+		</filter>
+		<encoder charset="utf-8">
+			<pattern>%d{HH:mm:ss} - %msg%n</pattern>
+		</encoder>
+	</appender>
+	<appender name="ErrFile"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${LOG_HOME}/${ERRLOG_FILENAME}.log</File>
+		<encoder>
+			<pattern>%d{HH:mm:ss} %level [%thread] %caller{1} - %msg%n</pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>ERROR</level>
+		</filter>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_HOME}/${ERRLOG_FILENAME}.log.%d{yyyy-MM-dd}
+			</fileNamePattern>
+		</rollingPolicy>
+	</appender>
+	<logger name="err" additivity="false" level="ERROR">
+		<appender-ref ref="ErrFile" />
+	</logger>
+	
+	<appender name="WsFile"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${LOG_HOME}/${WS_FILENAME}.log</File>
+		<encoder>
+			<pattern>%d{HH:mm:ss} %level [%thread] %caller{1} - %msg%n</pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>INFO</level>
+		</filter>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_HOME}/${WS_FILENAME}.log.%d{yyyy-MM-dd}
+			</fileNamePattern>
+		</rollingPolicy>
+	</appender>
+	<logger name="ws" additivity="false" level="INFO">
+		<appender-ref ref="WsFile" />
+	</logger>
+	<appender name="OrderFile"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${LOG_HOME}/${ORDER_FILENAME}.log</File>
+		<encoder>
+			<pattern>%d{HH:mm:ss} %level [%thread] %caller{1} - %msg%n</pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>INFO</level>
+		</filter>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_HOME}/${ORDER_FILENAME}.log.%d{yyyy-MM-dd}
+			</fileNamePattern>
+		</rollingPolicy>
+	</appender>
+	<logger name="order" additivity="false" level="INFO">
+		<appender-ref ref="OrderFile" />
+	</logger>
+	<root level="${LOG_LEVEL}">
+		<appender-ref ref="FILE" />
+		<appender-ref ref="STDOUT" />
+	</root>
+	<logger name="org" level="ERROR" />
+</configuration>

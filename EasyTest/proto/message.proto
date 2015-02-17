@@ -1,0 +1,9 @@
+package proto;//生成的数据访问类所在的包名(注意：在此无需写全包路径)  
+option java_package = "com.netty4.erlproto";//生成的数据访问类所在包的全路径  
+option java_outer_classname = "MessageBuf";//生成的数据访问类的类名 
+import "header.proto";
+message Message {  
+  required Header header = 1;//头消息 
+  optional bytes body = 2;//内容  
+ 
+} 
